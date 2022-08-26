@@ -1,7 +1,11 @@
+import 'package:belajarfirebase/provider/auth.dart';
 import 'package:belajarfirebase/provider/storage.dart';
 import 'package:belajarfirebase/provider/users.dart';
+import 'package:belajarfirebase/screen/login_screen.dart';
+import 'package:belajarfirebase/screen/register_screen.dart';
 import 'package:belajarfirebase/screen/upload_screen.dart';
 import 'package:belajarfirebase/screen/users_screen.dart';
+import 'package:belajarfirebase/screen/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +34,11 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => Storage(),
           ),
+          ChangeNotifierProvider(
+            create: (context) => Auth(),
+          ),
         ],
-        child: UploadScreen(),
+        child: Wrapper(),
       ),
     );
   }
