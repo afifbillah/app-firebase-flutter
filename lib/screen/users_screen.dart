@@ -6,15 +6,26 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../provider/auth.dart';
+
 class UserScreen extends StatelessWidget {
   const UserScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Auth auth = Provider.of<Auth>(context);
     Users users = Provider.of<Users>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Users'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              auth.logOut();
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

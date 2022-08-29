@@ -1,19 +1,18 @@
+import 'package:belajarfirebase/provider/auth.dart';
+import 'package:belajarfirebase/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/auth.dart';
-
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Auth auth = Provider.of<Auth>(context);
     TextEditingController emailC = TextEditingController();
-    TextEditingController passwordC = TextEditingController();
+    Auth auth = Provider.of<Auth>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text("Reset Password"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -30,21 +29,12 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            TextField(
-              controller: passwordC,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
             ElevatedButton(
               onPressed: () {
-                auth.register(emailC.text, passwordC.text);
+                auth.resetPassword(emailC.text);
                 Navigator.pop(context);
               },
-              child: Text("Register"),
+              child: Text("Reset Password"),
             ),
           ],
         ),

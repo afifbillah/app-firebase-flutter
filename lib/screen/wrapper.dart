@@ -19,7 +19,9 @@ class Wrapper extends StatelessWidget {
         builder: (context, snapshot) {
           print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.active) {
-            return (snapshot.data != null) ? UserScreen() : LoginScreen();
+            return (snapshot.data != null && snapshot.data!.emailVerified)
+                ? UserScreen()
+                : LoginScreen();
           } else {
             return Center(
               child: CircularProgressIndicator(),
